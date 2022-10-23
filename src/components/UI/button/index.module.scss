@@ -1,0 +1,83 @@
+.button {
+    width: 100%;
+    background-color: currentColor;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .2s background-color linear;
+
+    .text {
+        font-size: 14px;
+        color: var(--FG_0);
+        font-weight: 400;
+        padding: 8px 12px;
+        transition: .1s background-color linear;
+        line-height: 1.4em;
+    }
+
+    &:hover {
+        &:not(.disabled) {
+            &:not(.loading) {
+                .text {
+                    background-color: #00000010;
+                }
+            }
+        }
+    }
+
+    &:active {
+        &:not(.disabled) {
+            &:not(.loading) {
+                .text {
+                    background-color: #00000000;
+                }
+            }
+        }
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        background-color: var(--BG_0);
+        .text {
+            background-color: var(--BG_3);
+        }
+    }
+
+    .spinner {
+        height: 1.4em;
+        width: 100%;
+
+        svg {
+            height: 100%;
+            animation: rotate 1s linear infinite;
+
+            circle {
+                stroke: var(--FG_0);
+                stroke-linecap: round;
+                animation: dash 2s ease-in-out infinite;
+            }
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 150;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 90, 150;
+                stroke-dashoffset: -35;
+            }
+            100% {
+                stroke-dasharray: 90, 150;
+                stroke-dashoffset: -124;
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+.label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--FG_2);
+    position: relative;
+
+    .input {
+        padding: 10px;
+        font-size: 16px;
+        color: var(--FG_3);
+        background-color: var(--BG_2);
+        border-radius: 3px;
+        font-weight: 400;
+
+        &::placeholder {
+            color: var(--FG_1);
+            opacity: 1;
+            transition: .2s opacity linear;
+        }
+        &:focus::placeholder {
+            opacity: 0;
+        }
+    }
+
+    &[data-error] {
+        &::after {
+            content: attr(data-error);
+            position: absolute;
+            color: #FFACAC;
+            font-size: 12px;
+            text-transform: none;
+            inset: auto 0 calc(-1em - 2px - 4px) auto;
+            white-space: nowrap;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .input {
+            outline: 2px solid #FFACAC;
+        }
+    }
+
+    &[data-postfix] {
+        &::before {
+            content: attr(data-postfix);
+            font-size: 16px;
+            color: var(--FG_3);
+            position: absolute;
+            inset: auto 10px 10px auto;
+            text-transform: none;
+        }
+    }
+}

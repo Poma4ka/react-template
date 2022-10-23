@@ -1,0 +1,35 @@
+.note {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--FG_1);
+}
+
+.h1,.h2,.h3,.h4,.h5 {
+    font-size: clamp(calc(var(--h-font-fize) / 1.2 * 1px),calc(var(--h-font-fize) / 7 * 1vw),calc(var(--h-font-fize) * 1px));
+    color: var(--FG_2);
+
+    &[data-resizible=false] {
+        font-size: var(--h-font-fize);
+    }
+}
+
+.h1 {
+    --h-font-fize: 36;
+}
+
+.h2 {
+    --h-font-fize: 26;
+}
+
+.h3 {
+    --h-font-fize: 22;
+}
+
+.h4 {
+    --h-font-fize: 18;
+}
+
+.h5 {
+    --h-font-fize: 14;
+}
+

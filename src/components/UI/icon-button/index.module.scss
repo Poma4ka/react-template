@@ -1,0 +1,71 @@
+.button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 40px;
+    background-color: initial;
+    transition: .2s all linear;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+
+    &:hover {
+        background-color: var(--BG_2);
+    }
+
+    > svg {
+        color: var(--FG_2);
+        height: 100%;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        
+        &:hover {
+            background-color: initial !important;
+        }
+
+        > svg {
+            opacity: 0.5;
+        }
+    }
+
+    .spinner {
+        width: 100%;
+
+        svg {
+            height: 100%;
+            animation: rotate 1s linear infinite;
+
+            circle {
+                stroke: var(--FG_2);
+                stroke-linecap: round;
+                animation: dash 2s ease-in-out infinite;
+            }
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 150;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 90, 150;
+                stroke-dashoffset: -35;
+            }
+            100% {
+                stroke-dasharray: 90, 150;
+                stroke-dashoffset: -124;
+            }
+        }
+    }
+}

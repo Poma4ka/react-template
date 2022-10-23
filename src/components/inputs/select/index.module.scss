@@ -1,0 +1,111 @@
+.realInput {
+    display: none;
+}
+
+.wrapper {
+    --BACKGROUND_COLOR: var(--BG_0);
+    --BACKGROUND_HOVER_COLOR: var(--BG_1);
+    --BACKGROUND_ACTIVE_COLOR: var(--BLUE);
+    --BACKGROUND_DISABLED_COLOR: var(--BG_2);
+    --BORDER_COLOR: var(--BG_3);
+    --TEXT_COLOR: var(--FG_2);
+    --TEXT_ACTIVE_COLOR: var(--FG_0);
+    --PLACEHOLDER_COLOR: var(--FG_1);
+    --BORDER_RADIUS: 3px;
+
+    position: relative;
+    z-index: 1;
+
+    &[data-disabled=true] {
+        .input {
+            background-color: var(--BACKGROUND_DISABLED_COLOR);
+            cursor: default;
+
+            .value {
+                opacity: 0.5;
+            }
+
+            .check {
+                color: var(--PLACEHOLDER_COLOR);
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .input {
+        border-radius: var(--BORDER_RADIUS);
+        border: 1px solid var(--BORDER_COLOR);
+        padding: 8px 34px 8px 12px;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        background-color: var(--BACKGROUND_COLOR);
+
+        .value {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            position: relative;
+            width: 100%;
+            min-height: 1em;
+            color: var(--TEXT_COLOR);
+
+            .placeholder {
+                color: var(--PLACEHOLDER_COLOR);
+            }
+        }
+
+        .check {
+            color: var(--TEXT_COLOR);
+            position: absolute;
+            inset: auto 12px auto auto;
+            width: 12px;
+        }
+    }
+
+    .menu {
+        position: absolute;
+        width: 100%;
+        margin-top: 5px;
+        border-radius: var(--BORDER_RADIUS);
+        max-height: min(200px,60vh);
+        overflow-y: var(--SCROLL);
+        transition: .1s max-height linear;
+        border: 1px solid var(--BORDER_COLOR);
+        background-color: var(--BACKGROUND_COLOR);
+        overflow-x: hidden;
+        padding: 5px 0;
+
+        .option {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: var(--TEXT_COLOR);
+            cursor: pointer;
+            transition: .1s all linear;
+
+            &:hover {
+                background-color: var(--BACKGROUND_HOVER_COLOR);
+            }
+            &[data-active=true] {
+                background-color: var(--BACKGROUND_ACTIVE_COLOR);
+                color: var(--TEXT_ACTIVE_COLOR);
+            }
+        }
+
+        .group {
+
+            .name {
+                font-size: 12px;
+                color: var(--PLACEHOLDER_COLOR);
+                padding: 8px 15px 4px;
+            }
+
+            .option {
+                padding-left: 20px;
+            }
+        }
+
+    }
+}
